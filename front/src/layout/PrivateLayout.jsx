@@ -41,8 +41,8 @@ const PrivateLayout = () => {
         <>
         {state.user
         ?(<div>
-            <button onClick={handler}>Cerrar sesión</button>
             <Navbar elements={privateNavbar}/>
+            <button onClick={handler}>Cerrar sesión</button>
             <span>PrivateLayout</span>
             <Outlet/>
             <Footer/>

@@ -14,7 +14,6 @@ const FormAnswer = ({idQuestion}) => {
       }
 
     return(
-
         <div>
             <form ref={form} onSubmit={submitForm} onChange={updateFormData}>
                 <h1>Respuestas</h1>

@@ -9,6 +9,12 @@ export const publicNavbar = [
         cName: 'nav-text'
     },
     {
+        title: 'Preguntas',
+        url: '/QuestionsPage',
+        icon: <FaIcons.FaQuestion />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Login',
         url: '/Login',
         icon: <FaIcons.FaUserAlt />,
@@ -19,14 +25,32 @@ export const publicNavbar = [
 export const privateNavbar = [
     {
         title: 'Inicio',
-        url: '/',
+        url: '/private/',
         icon: <AiIcons.AiFillHome />,
         cName: 'nav-text'
     },
     {
         title: 'Preguntas',
-        url: '/QuestionsPage',
-        icon: <FaIcons.FaQuestionCircle />,
+        url: '/private/QuestionsPage',
+        icon: <FaIcons.FaQuestion />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Nueva',
+        url: '/private/CreateQuestion',
+        icon: <FaIcons.FaPlus />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Mis preguntas',
+        url: '/private/MyQuestions',
+        icon: <FaIcons.FaQuestion />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Perfil',
+        url: '/private/profile',
+        icon: <FaIcons.FaCog />,
         cName: 'nav-text'
     }
 ];

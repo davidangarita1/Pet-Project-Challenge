@@ -27,7 +27,6 @@ const PublicLayout = () => {
             .catch()
     }
 
-
     useEffect(() => {
         app.auth().onAuthStateChanged((user) => {
             if (user) {

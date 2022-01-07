@@ -1,9 +1,18 @@
 import React from 'react'
+import * as FaIcons from 'react-icons/fa';
+import * as SiIcons from 'react-icons/si';
 
 const Footer = () => {
     return (
-        <div>
-           &copy; 2022 - David H. Angarita - All Rights Reserved
+        <div className='footerPage'>
+           &copy; 2022 - 
+           David H. Angarita - 
+           Reto Sofka sobre preguntas y respuestas - 
+           Hecho con 
+           ReactJs <FaIcons.FaReact /> , 
+           Java <SiIcons.SiJava /> , y 
+           SpringBoot <SiIcons.SiSpring/> - 
+           Metodologia de Programación <FaIcons.FaCode /> Funcional Reactiva
         </div>
     )
 }
