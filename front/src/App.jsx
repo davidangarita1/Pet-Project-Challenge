@@ -10,6 +10,7 @@ import OneQuestionPagePublic from './pages/public/OneQuestionPagePublic';
 import QuestionsPagePublic from './pages/public/QuestionsPagePublic';
 import CreateQuestion from './pages/private/CreateQuestion';
 import MyQuestions from './pages/private/MyQuestions';
+import Logout from './pages/private/Logout';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="Question/:id" element={<OneQuestionPagePrivate />} />
               <Route path="CreateQuestion" element={<CreateQuestion />} />
               <Route path="MyQuestions" element={<MyQuestions />} />
+              <Route path="Logout" element={<Logout />} />
             </Route>
           </Routes>
         </BrowserRouter>

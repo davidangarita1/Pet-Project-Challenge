@@ -6,21 +6,13 @@ import { app } from "../service/firebase"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import {  useDispatch ,useSelector  } from "react-redux"
-import {loggedAction,logoutAction} from "../actions/AuthorActions"
-
-
+import { loggedAction } from "../actions/AuthorActions"
 
 const PrivateLayout = () => {
 
     const state = useSelector(state=>state.auth)
     const dispatch = useDispatch()
     const navigate=useNavigate()
-
-    const handler=()=>{
-        app.auth().signOut()
-        dispatch(logoutAction())
-        navigate("/")
-    }
 
     useEffect(()=>{
         app.auth().onAuthStateChanged((user)=>{
@@ -42,7 +34,6 @@ const PrivateLayout = () => {
         {state.user
         ?(<div>
             <Navbar elements={privateNavbar}/>
-            <button onClick={handler}>Cerrar sesión</button>
             <span>PrivateLayout</span>
             <Outlet/>
             <Footer/>

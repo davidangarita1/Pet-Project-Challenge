@@ -52,5 +52,11 @@ export const privateNavbar = [
         url: '/private/profile',
         icon: <FaIcons.FaCog />,
         cName: 'nav-text'
+    },
+    {
+        title: 'Cerrar sesión',
+        url: '/private/Logout',
+        icon: <FaIcons.FaSignOutAlt />,
+        cName: 'nav-text'
     }
 ];

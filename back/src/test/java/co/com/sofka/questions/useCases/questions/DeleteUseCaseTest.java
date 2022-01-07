@@ -26,14 +26,14 @@ class DeleteUseCaseTest {
     @Test
     void deleteUseCaseTest(){
 
-        var answerDTO = new AnswerDTO("1asd2153453", "123", "What id DDD in software");
+        var answerDTO = new AnswerDTO("1","1asd2153453", "123", "What id DDD in software");
 
-        var answer = new Answer("1asd2153453", "123", "1", "What id DDD in software", 1);
+        var answer = new Answer("1", "123", "1asd2153453", "What id DDD in software", 1);
 
-        Mockito.when(questionRepository.deleteById("1asd2153453")).thenReturn(Mono.empty());
-        Mockito.when(answerRepository.deleteByQuestionId("1asd2153453")).thenReturn(Mono.empty());
+        Mockito.when(questionRepository.deleteById("1")).thenReturn(Mono.empty());
+        Mockito.when(answerRepository.deleteByQuestionId("1")).thenReturn(Mono.empty());
 
-        var result = deleteQuestionUseCase.apply("1asd2153453").block();
+        var result = deleteQuestionUseCase.apply("1").block();
         Assertions.assertNull(result);
     }
 }
