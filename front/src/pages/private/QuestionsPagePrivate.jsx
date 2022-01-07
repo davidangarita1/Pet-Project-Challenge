@@ -15,7 +15,7 @@ const QuestionsPagePrivate = () => {
     
     return (
         <>
-            <h1>private</h1>
+            <h1>Private</h1>
             {error&& <h1>{error}</h1>}
             {questions && questions.map((question)=>{
                 return(
