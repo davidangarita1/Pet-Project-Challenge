@@ -13,6 +13,13 @@ export const myQuestionsLoadSucces=(questions)=>{
     }
 }
 
+export const myQuestionDelete=(id)=>{
+    return {
+        type:actionsTypesMyQuestion.DELETE_SUCCESS,
+        payload:id
+    }
+}
+
 export const myQuestionsLoadError=(error)=>{
     return {
         type:actionsTypesMyQuestion.LOAD_FAILURE_MY_QUESTIONS,

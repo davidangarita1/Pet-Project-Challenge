@@ -1,39 +1,42 @@
-import { useDispatch,useSelector } from "react-redux";
-import { loadById } from '../../app/middleware/payloadQuestions';
+import { useDispatch, useSelector } from "react-redux";
+import { loadById, deleteAnswer } from '../../app/middleware/payloadQuestions';
 import OneQuestionPrivate from '../../components/private/OneQuestionPrivate';
-import {useEffect} from'react'
+import { Fragment, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import FormAnswer from "../../components/private/FormAnswer";
 import ViewAnswer from "../../components/private/ViewAnswer";
 
 const OneQuestionPagePrivate = () => {
-    const {id}=useParams();
-    
+    const { id } = useParams();
 
     const dispatch = useDispatch()
-    const {oneQuestion} = useSelector(state => state.oneQuestion)
+    const { isLoading, oneQuestion, error } = useSelector(state => state.oneQuestion)
 
-    useEffect(()=>{
-      dispatch(loadById(id))
-    },[])
-    console.log("aparece ", oneQuestion);
+    useEffect(() => {
+        dispatch(loadById(id))
+    }, [dispatch, id])
+
+    const deleteAnswers = (id) => {
+        dispatch(deleteAnswer(id))
+    }
 
     return (
-        <>  
-            <h1>private</h1>
-            {oneQuestion && 
-            <>
-                 <OneQuestionPrivate oneQuestion={oneQuestion}/>
-                 {oneQuestion.answers&&oneQuestion.answers.map((answer)=>{
-                     return(
-                         <ViewAnswer key={answer.id} answer={answer} />
-                     )
-                 }) }
-                 <FormAnswer idQuestion={oneQuestion.id}></FormAnswer>
-            </>     
+        <Fragment>
+            {oneQuestion &&
+                <>
+                    <OneQuestionPrivate oneQuestion={oneQuestion} />
+                    {oneQuestion.answers && oneQuestion.answers.map((answer) => {
+                        return (
+                            <ViewAnswer key={answer.id} answer={answer} deleteAnswer={deleteAnswers} />
+                        )
+                    })}
+                    <FormAnswer idQuestion={oneQuestion.id}></FormAnswer>
+                </>
             }
-            
-        </>
+            {isLoading && <h1>Cargando...</h1>}
+            {error && <h1> Error {error} </h1>}
+
+        </Fragment>
     )
 }
 

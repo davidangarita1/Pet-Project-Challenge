@@ -7,7 +7,7 @@ export const questionsLoading=()=>{
     }
 }
 
-export const questionsLoadSucces=(questions)=>{
+export const questionsLoadSuccess=(questions)=>{
     return {
         type:actionsTypesQuestions.LOAD_SUCCESS,
         payload:questions

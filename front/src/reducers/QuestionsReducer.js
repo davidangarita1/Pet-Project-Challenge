@@ -15,12 +15,14 @@ const QuestionsReducer = (state=initialState,{type,payload})=>{
             return {
                 ...state,
                 isLoading:true,
+                error:null
                 }
         case actionsTypesQuestions.LOAD_SUCCESS:
             return {
                 ...state,
                 isLoading:false,
-                questions:payload
+                questions:payload,
+                error:null
                 }
         case actionsTypesQuestions.LOAD_FAILURE:
             return {

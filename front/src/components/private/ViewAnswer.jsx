@@ -1,11 +1,17 @@
+import { useSelector } from 'react-redux';
 
-const ViewAnswer = ({answer}) => {  
+const ViewAnswer = ({ answer, deleteAnswer }) => {
+    const state = useSelector(state => state.auth)
 
-    return(
+    return (
         <div className='question'>
+            <p>{answer.answer}</p>
+            <div>
+                {state.user.uid === answer.userId ? (deleteAnswer && (
+                    <button className="button right" onClick={() => deleteAnswer(answer.id)}>DELETE</button>
+                )) : null}
+            </div>
 
-            <p>{answer.answer}  - <small>{answer.position}</small></p>
-        
         </div>
     )
 }

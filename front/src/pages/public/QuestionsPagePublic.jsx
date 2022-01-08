@@ -1,29 +1,30 @@
-import {useEffect} from'react'
-import { useDispatch,useSelector } from "react-redux";
+import React, { Fragment } from 'react';
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import { loadAllQuestion } from '../../app/middleware/payloadQuestions';
 import QuestionPublic from '../../components/public/QuestionsPublic';
 
 const QuestionsPagePublic = () => {
     const dispatch = useDispatch()
-    const {isLoading,questions,error}=useSelector(state=>state.question)
+    const { isLoading, questions, error } = useSelector(state => state.question)
 
 
-    useEffect(()=>{
-      dispatch(loadAllQuestion())
-    },[])
-  
-    
+    useEffect(() => {
+        dispatch(loadAllQuestion())
+    }, [dispatch])
+
+
     return (
-        <>
-            <h1>public</h1>
-            {error&& <h1>{error}</h1>}
-            {questions && questions.map((question)=>{
-                return(
-                    <QuestionPublic key={question.id} question={question}/>
+        <Fragment>
+            {questions && questions.map((question) => {
+                return (
+                    <QuestionPublic key={question.id} question={question} />
                 )
-               
+
             })}
-        </>
+            {isLoading && <h1>Cargando...</h1>}
+            {error && <h1>Error {error}</h1>}
+        </Fragment>
     )
 }
 

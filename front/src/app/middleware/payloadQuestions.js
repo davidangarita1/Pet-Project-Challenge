@@ -1,7 +1,9 @@
-import { questionsLoading, questionsLoadSucces, questionsLoadError } from "../../actions/QuestionsActions";
-import { oneQuestionLoadSucces, oneQuestionLoadError } from "../../actions/OneQuestionActions";
-import { myQuestionsLoadSucces, myQuestionsLoading, myQuestionsLoadError } from "../../actions/MyQuestionsActions";
+import { questionsLoading, questionsLoadSuccess, questionsLoadError } from "../../actions/QuestionsActions";
+import { oneQuestionLoadSuccess, oneQuestionLoadError, oneQuestionsLoading, oneQuestionsDeleteAnswer } from "../../actions/OneQuestionActions";
+import { myQuestionsLoadSucces, myQuestionsLoading, myQuestionsLoadError, myQuestionDelete } from "../../actions/MyQuestionsActions";
 import axios from "axios";
+
+const API_URL = "http://localhost:4003";
 
 export const loadAllQuestion = () => (dispatch) => {
 
@@ -9,12 +11,12 @@ export const loadAllQuestion = () => (dispatch) => {
 
   const options = {
     method: 'GET',
-    url: 'http://localhost:4003/questions/getAll',
+    url: `${API_URL}/questions/getAll`,
     headers: { 'Content-Type': 'application/json' }
   };
 
   axios.request(options).then(function (response) {
-    dispatch(questionsLoadSucces(response.data))
+    dispatch(questionsLoadSuccess(response.data))
   }).catch(function (error) {
     dispatch(questionsLoadError(error.message))
   });
@@ -23,30 +25,33 @@ export const loadAllQuestion = () => (dispatch) => {
 
 export const loadById = (id) => (dispatch) => {
 
+  dispatch(oneQuestionsLoading())
+
   const options = {
     method: 'GET',
-    url: `http://localhost:4003/questions/get/${id}`,
+    url: `${API_URL}/questions/get/${id}`,
     headers: { 'Content-Type': 'application/json' }
   };
 
   axios.request(options).then(function (response) {
-    dispatch(oneQuestionLoadSucces(response.data))
+    dispatch(oneQuestionLoadSuccess(response.data))
   }).catch(function (error) {
     dispatch(oneQuestionLoadError(error.message))
   });
 }
 
 
-export const postQuestion = (question) => {
+export const postQuestion = (question, navigate) => {
 
   const options = {
     method: 'POST',
-    url: 'http://localhost:4003/questions/create',
+    url: `${API_URL}/questions/create`,
     headers: { 'Content-Type': 'application/json' },
     data: question
   };
 
   axios.request(options).then(function (response) {
+    navigate("/private/MyQuestions")
     console.log(response.data);
   }).catch(function (error) {
     console.error(error);
@@ -54,33 +59,52 @@ export const postQuestion = (question) => {
 }
 
 
-export const postAnswer = (answer) => {
+export const postAnswer = (answer) => (dispatch) => {
 
   const options = {
     method: 'POST',
-    url: 'http://localhost:4003/questions/add',
+    url: `${API_URL}/answer/add`,
     headers: { 'Content-Type': 'application/json' },
     data: answer
   };
 
   axios.request(options).then(function (response) {
     console.log(response.data);
+    dispatch(oneQuestionLoadSuccess(response.data))
   }).catch(function (error) {
     console.error(error);
   });
 }
 
+export const deleteQuestion = (id) => (dispatch) => {
+  dispatch(myQuestionsLoading())
 
-export const deleteQuestion = (id) => {
-  const options = { method: 'DELETE', url: `http://localhost:4003/questions/delete/${id}` };
+  const options = {
+    method: 'DELETE',
+    url: `${API_URL}/questions/delete/${id}`
+  };
 
   axios.request(options).then(function (response) {
-    console.log(response.data);
+    dispatch(myQuestionDelete(id))
   }).catch(function (error) {
     console.error(error);
   });
 }
 
+export const deleteAnswer = (id) => (dispatch) => {
+  dispatch(oneQuestionsLoading())
+
+  const options = {
+    method: 'DELETE',
+    url: `${API_URL}/answer/delete/${id}`
+  };
+
+  axios.request(options).then(function (response) {
+    dispatch(oneQuestionsDeleteAnswer(id))
+  }).catch(function (error) {
+    dispatch(oneQuestionLoadError(error.message))
+  });
+}
 
 export const getUserQuestion = (userId) => (dispatch) => {
 
@@ -88,7 +112,7 @@ export const getUserQuestion = (userId) => (dispatch) => {
 
   const options = {
     method: 'GET',
-    url: `http://localhost:4003/questions/getOwnerAll/${userId}`,
+    url: `${API_URL}/questions/getOwnerAll/${userId}`,
     headers: { 'Content-Type': 'application/json' }
   };
   axios.request(options).then(function (response) {
@@ -104,7 +128,7 @@ export const getQuestionsByCategory = (category) => (dispatch) => {
 
   const options = {
     method: 'GET',
-    url: `http://localhost:4003/questions/filterCategory/${category}`,
+    url: `${API_URL}/questions/filterCategory/${category}`,
     headers: { 'Content-Type': 'application/json' }
   };
   axios.request(options).then(function (response) {

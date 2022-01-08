@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom"
 
-const QuestionsPrivate = ({question}) => {  
+const QuestionsPrivate = ({ question, deleteQuestion }) => {
 
-    return(
+    return (
         <div className='question'>
-            <p>{question.category}  - <small>{question.type}</small></p>
-            <p>{question.question}</p>
-            {/* {onDelete && (
-                <button className="button right" onClick={() => onDelete(question.id)}>DELETE</button>
-            )} */}
             <Link to={`/private/question/${question.id}`} className="button">
-                Ver Pregunta
+                {question.question}
             </Link>
-        
+            <p>
+                <span className="badge bg-secondary">{question.category}</span>
+                <span className="badge bg-success">{question.type}</span>
+            
+            {deleteQuestion && (
+                <button className="button" onClick={() => deleteQuestion(question.id)}>DELETE</button>
+            )}
+            </p>
+            
+
         </div>
     )
 }

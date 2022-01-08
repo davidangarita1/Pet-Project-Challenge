@@ -1,31 +1,38 @@
 import actionsTypesMyQuestion from "../actions/actionsTypes/ActionsTypeMyQuestions"
 
-const initialState={
-    isLoading:false,
-    myQuestions:null,
-    error:null
+const initialState = {
+    isLoading: false,
+    myQuestions: null,
+    error: null
 }
 
-const myQuestionReducer = (state=initialState, {type,payload})=>{
-    switch(type){
+const myQuestionReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
 
         case actionsTypesMyQuestion.LOADING_SUCCESS_MY_QUESTIONS:
             return {
                 ...state,
-                isLoading:true,
-                }
+                isLoading: true,
+            }
         case actionsTypesMyQuestion.LOAD_SUCCESS_MY_QUESTIONS:
             return {
                 ...state,
-                isLoading:false,
-                myQuestions:payload
-                }
+                isLoading: false,
+                myQuestions: payload
+            }
+        case actionsTypesMyQuestion.DELETE_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: null,
+                myQuestions: state.myQuestions.filter(question => question.id !== payload)
+            }
         case actionsTypesMyQuestion.LOAD_FAILURE_MY_QUESTIONS:
             return {
                 ...state,
-                isLoading:false,
-                error:payload
-                }
+                isLoading: false,
+                error: payload
+            }
 
         default: return state;
     }

@@ -4,15 +4,13 @@ const QuestionsPublic = ({question}) => {
 
     return(
         <div className='question'>
-            <p>{question.category}  - <small>{question.type}</small></p>
-            
-            {/* {onDelete && (
-                <button className="button right" onClick={() => onDelete(question.id)}>DELETE</button>
-            )} */}
             <Link to={`/question/${question.id}`} className="button">
-                Ver Pregunta.
+                {question.question}
             </Link>
-        
+            <p>
+                <span class="badge bg-secondary">{question.category}</span>
+                <span class="badge bg-success">{question.type}</span>
+            </p>
         </div>
     )
 }

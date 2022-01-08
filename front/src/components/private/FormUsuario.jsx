@@ -1,6 +1,5 @@
-/* import React from 'react';
+import React from 'react';
 import useFormData from '../../hooks/UseFormData'
-import { postQuestion } from '../../app/middleware/payloadQuestions';
 
 const FormUsuario = () => {
 
@@ -19,7 +18,6 @@ const FormUsuario = () => {
                 <label>Datos Personales</label>
                 <input name="nombre" placeholder='Ingrese Nombre'></input>
                 <input name="apellido" placeholder='Ingrese Pellido'></input>
-                <input name="correo" placeholder='Ingrese Correo'></input>
                 <button type="submit">Actualizar</button>
             </form>
         </div>
@@ -27,4 +25,4 @@ const FormUsuario = () => {
 
 }
 
-export default FormUsuario; */
+export default FormUsuario;

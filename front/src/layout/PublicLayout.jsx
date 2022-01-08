@@ -23,7 +23,7 @@ const PublicLayout = () => {
                         user.user.multiFactor.user.displayName,
                         user.user.multiFactor.user.uid,
                         user.user.multiFactor.user.photoURL))
-                    
+
                 navigate("/private/QuestionsPage")
             })
             .catch()
