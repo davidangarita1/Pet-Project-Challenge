@@ -27,7 +27,8 @@ const FormQuestion = () => {
         <label>Añadir nueva pregunta</label>
 
         <input required name="question" type="text" placeholder='Ingresa aqui una pregunta'></input>
-        <input required name="userId" hidden type="text" defaultValue={state.user.uid} placeholder='Ingresa aqui una pregunta'></input>
+        <input required name="userId" hidden type="text" defaultValue={state.user.uid} placeholder='Ingresa un userId'></input>
+        <input  required name="email" hidden type="text" defaultValue={state.user.email} placeholder='Ingresa aqui un email aqui'></input>
 
         <label className=" font-medium">Tipo</label>
         <select required className="" name="type" defaultValue="OPEN">
