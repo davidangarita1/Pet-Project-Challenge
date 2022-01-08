@@ -8,7 +8,7 @@ const ViewAnswer = ({ answer, deleteAnswer }) => {
             <p>{answer.answer}</p>
             <div>
                 {state.user.uid === answer.userId ? (deleteAnswer && (
-                    <button className="button right" onClick={() => deleteAnswer(answer.id)}>DELETE</button>
+                    <button className="button" onClick={() => deleteAnswer(answer.id)}>Borrar</button>
                 )) : null}
             </div>
 

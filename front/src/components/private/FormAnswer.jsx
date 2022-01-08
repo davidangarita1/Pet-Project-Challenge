@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useFormData from '../../hooks/UseFormData'
 import { postAnswer } from '../../app/middleware/payloadQuestions';
 import { useSelector, useDispatch } from 'react-redux';
+import swal from 'sweetalert'
 
 const FormAnswer = ({ idQuestion }) => {
 
@@ -19,6 +20,7 @@ const FormAnswer = ({ idQuestion }) => {
         setAlert(false)
         dispatch(postAnswer(formData))
         form.current.reset()
+        swal({ title: "Respuesta guardada", text: "Click en el botón Ok!", icon: "success"});
     }
 
     return (
@@ -35,7 +37,6 @@ const FormAnswer = ({ idQuestion }) => {
         </div>
 
     )
-
 }
 
 export default FormAnswer

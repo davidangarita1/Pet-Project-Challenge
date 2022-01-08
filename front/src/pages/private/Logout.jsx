@@ -7,7 +7,7 @@ import { app } from "../../service/firebase"
 
 const Logout = () => {
     const dispatch = useDispatch()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
 	if(app.auth().currentUser){
 		setTimeout(()=>{

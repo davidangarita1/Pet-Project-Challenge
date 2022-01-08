@@ -5,6 +5,7 @@ import { Fragment, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import FormAnswer from "../../components/private/FormAnswer";
 import ViewAnswer from "../../components/private/ViewAnswer";
+import swal from 'sweetalert'
 
 const OneQuestionPagePrivate = () => {
     const { id } = useParams();
@@ -17,7 +18,19 @@ const OneQuestionPagePrivate = () => {
     }, [dispatch, id])
 
     const deleteAnswers = (id) => {
-        dispatch(deleteAnswer(id))
+        swal({
+            title: "Estas segur@?",
+            text: "Una vez eliminada, ¡no podrá recuperar esta respuesta!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("¡Tu respuesta ha sido eliminada!", {icon: "success"});
+                    dispatch(deleteAnswer(id))
+                }
+            });
     }
 
     return (
