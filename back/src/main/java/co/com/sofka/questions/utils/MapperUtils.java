@@ -23,7 +23,7 @@ public class MapperUtils {
         };
     }
 
-    public Function<Answer, AnswerDTO> mapEntityToAnswer() {
+    public Function<Answer, AnswerDTO> mapEntityToAnswerDTO() {
         return entity -> new AnswerDTO(
                 entity.getId(),
                 entity.getQuestionId(),
@@ -45,7 +45,7 @@ public class MapperUtils {
         };
     }
 
-    public Function<Question, QuestionDTO> mapEntityToQuestion() {
+    public Function<Question, QuestionDTO> mapEntityToQuestionDTO() {
         return entity -> new QuestionDTO(
                 entity.getId(),
                 entity.getUserId(),
@@ -68,7 +68,7 @@ public class MapperUtils {
         };
     }
 
-    public Function<Person, PersonDTO> mapEntityToPerson() {
+    public Function<Person, PersonDTO> mapEntityToPersonDTO() {
         return entity -> new PersonDTO(
                 entity.getId(),
                 entity.getUid(),

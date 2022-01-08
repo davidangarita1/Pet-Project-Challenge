@@ -1,10 +1,11 @@
 package co.com.sofka.questions.useCases.questions;
 
-import co.com.sofka.questions.collections.Answer;
-import co.com.sofka.questions.model.AnswerDTO;
+import co.com.sofka.questions.collections.Question;
+import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.repositories.AnswerRepository;
 import co.com.sofka.questions.repositories.QuestionRepository;
-import co.com.sofka.questions.useCases.questions.DeleteUseCase;
+import co.com.sofka.questions.utils.Category;
+import co.com.sofka.questions.utils.Type;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -21,19 +22,21 @@ class DeleteUseCaseTest {
     private QuestionRepository questionRepository;
 
     @SpyBean
-    DeleteUseCase deleteQuestionUseCase;
+    DeleteUseCase useCase;
 
     @Test
     void deleteUseCaseTest(){
 
-        var answerDTO = new AnswerDTO("1","1asd2153453", "123", "What id DDD in software");
+        var questionDT0 = new QuestionDTO("1as", "1234", "What id DDD in software", Type.OPEN, Category.SCIENCES);
 
-        var answer = new Answer("1", "123", "1asd2153453", "What id DDD in software", 1);
+        var question = new Question("1as", "1234", "What id DDD in software",Type.OPEN, Category.SOFTWARE_DEVELOPMENT);
 
-        Mockito.when(questionRepository.deleteById("1")).thenReturn(Mono.empty());
-        Mockito.when(answerRepository.deleteByQuestionId("1")).thenReturn(Mono.empty());
+        Mockito.when(questionRepository.deleteById("1as")).thenReturn(Mono.empty());
+        Mockito.when(answerRepository.deleteByQuestionId("1as")).thenReturn(Mono.empty());
 
-        var result = deleteQuestionUseCase.apply("1").block();
+        var result = useCase.apply("1as").block();
         Assertions.assertNull(result);
+
+        Mockito.verify(answerRepository, Mockito.times(1)).deleteByQuestionId("1as");
     }
 }

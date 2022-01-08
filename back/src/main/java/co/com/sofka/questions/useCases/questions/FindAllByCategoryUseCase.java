@@ -24,6 +24,6 @@ public class FindAllByCategoryUseCase implements Function<String, Flux<QuestionD
     public Flux<QuestionDTO> apply(String category) {
         Objects.requireNonNull(category, "Category is required");
         return questionRepository.findAllByCategory(category)
-                .map(mapperUtils.mapEntityToQuestion());
+                .map(mapperUtils.mapEntityToQuestionDTO());
     }
 }

@@ -15,7 +15,7 @@ public class DeleteUseCase implements Function<String, Mono<Void>> {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
 
-    public DeleteUseCase(AnswerRepository answerRepository, QuestionRepository questionRepository) {
+    public DeleteUseCase(QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
     }

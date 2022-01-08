@@ -69,18 +69,6 @@ public class QuestionRouter {
     }
 
     @Bean
-    public RouterFunction<ServerResponse> addAnswer(AddAnswerUseCase useCase) {
-        return route(POST("questions/add").and(accept(MediaType.APPLICATION_JSON)),
-                request -> request.bodyToMono(AnswerDTO.class)
-                        .flatMap(addAnswerDTO -> useCase.apply(addAnswerDTO)
-                                .flatMap(result -> ServerResponse.ok()
-                                        .contentType(MediaType.APPLICATION_JSON)
-                                        .bodyValue(result))
-                        )
-        );
-    }
-
-    @Bean
     public RouterFunction<ServerResponse> delete(DeleteUseCase useCase) {
         return route(
                 DELETE("questions/delete/{id}").and(accept(MediaType.APPLICATION_JSON)),
@@ -106,7 +94,7 @@ public class QuestionRouter {
     @Bean
     public RouterFunction<ServerResponse> findByCategory(FindAllByCategoryUseCase useCase) {
         return route(
-                GET("questions/filterCategory/{category}").and(accept(MediaType.APPLICATION_JSON)),
+                GET("questions/category/{category}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(useCase.apply(request.pathVariable("category")), QuestionDTO.class))

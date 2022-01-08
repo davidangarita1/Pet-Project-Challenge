@@ -39,7 +39,7 @@ class GetPersonUseCaseTest {
         person.setPictureURL("/profilepicture");
 
 
-        Mockito.when(repository.findById(Mockito.any(String.class))).thenReturn(Mono.just(person));
+        Mockito.when(repository.findPersonByUid(Mockito.any(String.class))).thenReturn(Mono.just(person));
 
         var onePerson = useCase.apply("123");
         Assertions.assertEquals(onePerson.block().getUid(), person.getUid());

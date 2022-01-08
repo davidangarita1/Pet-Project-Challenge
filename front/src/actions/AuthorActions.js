@@ -8,7 +8,6 @@ export const loginAction = (email,name,uid,photo) => {
 }
 
 
-
 export const logoutAction =()=>{
     return{
         type : actionsTypesAuth.LOGOUT,

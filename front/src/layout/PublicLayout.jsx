@@ -18,10 +18,12 @@ const PublicLayout = () => {
     const handler = () => {
         app.auth().signInWithPopup(google)
             .then(user => {
-                dispatch(loginAction(user.user.multiFactor.user.email,
-                    user.user.multiFactor.user.displayName,
-                    user.user.multiFactor.user.uid,
-                    user.user.multiFactor.user.photoURL))
+                dispatch(
+                    loginAction(user.user.multiFactor.user.email,
+                        user.user.multiFactor.user.displayName,
+                        user.user.multiFactor.user.uid,
+                        user.user.multiFactor.user.photoURL))
+                    
                 navigate("/private/QuestionsPage")
             })
             .catch()

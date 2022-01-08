@@ -22,9 +22,9 @@ public class GetPersonUseCase implements Function<String, Mono<PersonDTO>> {
     }
 
     @Override
-    public Mono<PersonDTO> apply(String id) {
-        Objects.requireNonNull(id, "Id is required");
-        return personRepository.findById(id)
-                .map(mapperUtils.mapEntityToPerson());
+    public Mono<PersonDTO> apply(String uid) {
+        Objects.requireNonNull(uid, "User Id is required");
+        return personRepository.findPersonByUid(uid)
+                .map(mapperUtils.mapEntityToPersonDTO());
     }
 }
