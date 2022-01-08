@@ -27,8 +27,6 @@ const PrivateLayout = () => {
         })
       },[dispatch, navigate])
 
-
-
     return (
         <>
         {state.user
