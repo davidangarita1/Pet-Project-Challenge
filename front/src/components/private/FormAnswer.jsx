@@ -13,10 +13,10 @@ const FormAnswer = ({ idQuestion }) => {
 
     const validator = (e) => {
         e.preventDefault()
-        formData.answer.length < 15 ? setAlert(true) : submitForm()
+        formData.answer.length < 15 ? setAlert(true) : submitForm(e)
     }
 
-    const submitForm = () => {
+    const submitForm = (e) => {
         setAlert(false)
         dispatch(postAnswer(formData))
         form.current.reset()
@@ -44,8 +44,8 @@ const FormAnswer = ({ idQuestion }) => {
                         placeholder="Ingresa aqui una respuesta"
                         aria-label="Recipient's username"
                         aria-describedby="basic-addon2" />
-                    <div class="input-group-append">
-                        <button class="btn btn-success" type="submit">Enviar</button>
+                    <div className="input-group-append">
+                        <button className="btn btn-success" type="submit">Enviar</button>
                     </div>
                 </div>
             </form>

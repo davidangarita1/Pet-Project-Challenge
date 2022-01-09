@@ -19,9 +19,7 @@ const QuestionsPagePublic = () => {
             {questions && questions.map((question) => {
                 return (
                     <QuestionPublic key={question.id} question={question} />
-                )
-
-            })}
+                )})}
             {isLoading && <h1>Cargando...</h1>}
             {error && <h1>Error {error}</h1>}
         </Fragment>

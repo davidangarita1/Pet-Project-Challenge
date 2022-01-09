@@ -13,11 +13,13 @@ const myQuestionReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 isLoading: true,
+                error: null
             }
         case actionsTypesMyQuestion.LOAD_SUCCESS_MY_QUESTIONS:
             return {
                 ...state,
                 isLoading: false,
+                error: null,
                 myQuestions: payload
             }
         case actionsTypesMyQuestion.DELETE_SUCCESS:

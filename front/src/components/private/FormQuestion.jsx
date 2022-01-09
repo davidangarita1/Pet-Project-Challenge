@@ -26,7 +26,7 @@ const FormQuestion = () => {
 
         <h3>Añadir nueva pregunta</h3>
         <div className="mb-3">
-          <label for="question" className="form-label">Escribe tu pregunta.</label>
+          <label className="form-label">Escribe tu pregunta.</label>
           <input required className="form-control-lg" name="question" type="text" placeholder='Ingresa aqui una pregunta'></input>
           <input required className="form-control" name="userId" hidden type="text" defaultValue={state.user.uid} placeholder='Ingresa un userId' />
           <input required className="form-control" name="email" hidden type="text" defaultValue={state.user.email} placeholder='Ingresa aqui un email aqui' />
@@ -52,12 +52,9 @@ const FormQuestion = () => {
             <option type="String" value="LANGUAGE">Lenguaje</option>
           </select>
         </div>
-
-
-
-
-
-        <button type="submit">Enviar</button>
+        <div className="mb-3">
+          <button className="btn btn-success" type="submit">Enviar</button>
+        </div>
       </form>
     </div>
   )

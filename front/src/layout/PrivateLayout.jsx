@@ -22,7 +22,7 @@ const PrivateLayout = () => {
                     user.multiFactor.user.uid,
                     user.multiFactor.user.photoURL))
             } else {
-                navigate("/")
+                navigate("/QuestionsPage")
             }
         })
     }, [dispatch, navigate])

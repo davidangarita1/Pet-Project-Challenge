@@ -9,7 +9,6 @@ import swal from 'sweetalert'
 
 const OneQuestionPagePrivate = () => {
     const { id } = useParams();
-
     const dispatch = useDispatch()
     const { isLoading, oneQuestion, error } = useSelector(state => state.oneQuestion)
 

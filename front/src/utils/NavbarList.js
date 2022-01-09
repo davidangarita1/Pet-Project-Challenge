@@ -9,12 +9,6 @@ export const publicNavbar = [
         cName: 'nav-text'
     },
     {
-        title: 'Preguntas',
-        url: '/QuestionsPage',
-        icon: <FaIcons.FaQuestion />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Login',
         url: '/Login',
         icon: <FaIcons.FaUserAlt />,
@@ -25,14 +19,8 @@ export const publicNavbar = [
 export const privateNavbar = [
     {
         title: 'Inicio',
-        url: '/private/',
-        icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Preguntas',
         url: '/private/QuestionsPage',
-        icon: <FaIcons.FaQuestion />,
+        icon: <AiIcons.AiFillHome />,
         cName: 'nav-text'
     },
     {

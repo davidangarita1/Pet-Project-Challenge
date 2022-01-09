@@ -6,8 +6,8 @@ const ViewAnswer = ({ answer, deleteAnswer }) => {
 
     return (
         <div className='col-6 offset-3 question'>
-            <div class="card mb-2">
-                <div class="card-body">
+            <div className="card mb-2">
+                <div className="card-body">
                     <div className="row">
                         <div className="col-11">
                             <h4>{answer.answer}</h4>

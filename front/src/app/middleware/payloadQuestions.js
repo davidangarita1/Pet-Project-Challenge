@@ -60,7 +60,6 @@ export const postQuestion = (question, navigate) => {
 
 
 export const postAnswer = (answer) => (dispatch) => {
-
   const options = {
     method: 'POST',
     url: `${API_URL}/answer/add`,

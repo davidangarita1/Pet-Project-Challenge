@@ -4,14 +4,14 @@ import OneQuestionReducer from "../reducers/OneQuestionReducer";
 import reducerAuth from "../reducers/AuthReducer";
 import myQuestionReducer from "../reducers/MyQuestionsReducer";
 
-const rootReducer=()=>{
+const rootReducer = () => {
 
     return combineReducers(
         {
-        question:reducerQuestions,
-        auth:reducerAuth,
-        oneQuestion:OneQuestionReducer,
-        myQuestion:myQuestionReducer
+            question: reducerQuestions,
+            auth: reducerAuth,
+            oneQuestion: OneQuestionReducer,
+            myQuestion: myQuestionReducer
         }
     )
 }

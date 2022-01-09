@@ -8,8 +8,8 @@ const QuestionsPublic = ({question}) => {
                 {question.question}
             </Link>
             <p>
-                <span class="badge bg-secondary">{question.category}</span>
-                <span class="badge bg-success">{question.type}</span>
+                <span className="badge bg-secondary">{question.category}</span>
+                <span className="badge bg-success">{question.type}</span>
             </p>
         </div>
     )

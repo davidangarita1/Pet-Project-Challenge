@@ -29,7 +29,6 @@ const OneQuestionReducer = (state = initialState, { type, payload }) => {
                 error: null,
                 oneQuestion: { ...state.oneQuestion, answers: answer }
             }
-
         case actionsTypesOneQuestion.LOADING_QUESTION
             :
             return {

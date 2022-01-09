@@ -17,16 +17,18 @@ const QuestionsPagePrivate = () => {
         <Fragment>
             <div className="row">
                 <div className="col-12 text-center">
-                <h1>Top Preguntas</h1>
+                    <h1>Top Preguntas</h1>
                 </div>
-            </div>  
-            {questions && questions.map((question) => {
-                return (
-                    <QuestionPrivate key={question.id} question={question} />
-                )
-            })}
-            {isLoading && <h1>Cargando...</h1>}
-            {error && <h1>Error {error}</h1>}
+            </div>
+            <div className='col-6 offset-3'>
+                {questions && questions.map((question) => {
+                    return (
+                        <QuestionPrivate key={question.id} question={question} />
+                    )
+                })}
+                {isLoading && <h1>Cargando...</h1>}
+                {error && <h1>Error {error}</h1>}
+            </div>
         </Fragment>
     )
 }

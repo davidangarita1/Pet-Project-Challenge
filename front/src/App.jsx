@@ -17,23 +17,25 @@ function App() {
 
   return (
     <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<PublicLayout />}>
-              <Route path="" element={<HomePage />} />
-              <Route path="QuestionsPage" element={<QuestionsPagePublic />} />
-              <Route path="Question/:id" element={<OneQuestionPagePublic />} />
-            </Route>
-            <Route path="/private" element={<PrivateLayout />}>
-              <Route path="QuestionsPage" element={<QuestionsPagePrivate />} />
-              <Route path="Question/:id" element={<OneQuestionPagePrivate />} />
-              <Route path="CreateQuestion" element={<CreateQuestion />} />
-              <Route path="MyQuestions" element={<MyQuestions />} />
-              <Route path="Logout" element={<Logout />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PublicLayout />}>
+            <Route path="" element={<HomePage />} />
+            <Route path="QuestionsPage" element={<QuestionsPagePublic />} />
+            <Route path="Question/:id" element={<OneQuestionPagePublic />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="/private" element={<PrivateLayout />}>
+            <Route path="QuestionsPage" element={<QuestionsPagePrivate />} />
+            <Route path="question/:id" element={<OneQuestionPagePrivate />} />
+            <Route path="CreateQuestion" element={<CreateQuestion />} />
+            <Route path="MyQuestions" element={<MyQuestions />} />
+            <Route path="Logout" element={<Logout />} />
+            <Route path="/private" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 
