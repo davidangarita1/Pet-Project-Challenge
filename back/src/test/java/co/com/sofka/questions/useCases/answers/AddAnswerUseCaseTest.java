@@ -32,11 +32,11 @@ class AddAnswerUseCaseTest {
 
     @Test
     void addAnswerUseCaseTest(){
-        var question = new QuestionDTO("1asd2153453", "1234", "What id DDD in software?", Type.OPEN, Category.SCIENCES, "Mensaje");
+        var question = new QuestionDTO("1asd2153453we", "1234", "What id DDD in software?", Type.OPEN, Category.SCIENCES, "Mensaje");
 
-        var answerDTO = new AnswerDTO("123","1asd2153453", "1234", "Domain Driven Design");
+        var answerDTO = new AnswerDTO("123","1asd2153453we", "1234", "Domain Driven Design");
 
-        var answer = new Answer("1asd2153453", "1234", "1", "Domain Driven Design", 1);
+        var answer = new Answer("1asd2153453", "1234", "1asd2153453we", "Domain Driven Design", 1);
 
         Mockito.when(answerRepository.save(Mockito.any(Answer.class))).thenReturn(Mono.just(answer));
         Mockito.when(getUseCase.apply(Mockito.anyString())).thenReturn(Mono.just(question));

@@ -8,7 +8,6 @@ const QuestionsPagePublic = () => {
     const dispatch = useDispatch()
     const { isLoading, questions, error } = useSelector(state => state.question)
 
-
     useEffect(() => {
         dispatch(loadAllQuestion())
     }, [dispatch])

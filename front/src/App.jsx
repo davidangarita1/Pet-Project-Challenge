@@ -7,11 +7,11 @@ import HomePage from './pages/public/HomePage';
 import QuestionsPagePrivate from './pages/private/QuestionsPagePrivate';
 import OneQuestionPagePrivate from './pages/private/OneQuestionPagePrivate';
 import OneQuestionPagePublic from './pages/public/OneQuestionPagePublic';
-import QuestionsPagePublic from './pages/public/QuestionsPagePublic';
 import CreateQuestion from './pages/private/CreateQuestion';
 import MyQuestions from './pages/private/MyQuestions';
 import Logout from './pages/private/Logout';
 import NotFound from './components/NotFound';
+import Login from './pages/public/Login';
 
 function App() {
 
@@ -21,8 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<PublicLayout />}>
             <Route path="" element={<HomePage />} />
-            <Route path="QuestionsPage" element={<QuestionsPagePublic />} />
-            <Route path="Question/:id" element={<OneQuestionPagePublic />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="question/:id" element={<OneQuestionPagePublic />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/private" element={<PrivateLayout />}>

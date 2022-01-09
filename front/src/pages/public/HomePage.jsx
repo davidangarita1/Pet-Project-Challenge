@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import QuestionsPagePublic from './QuestionsPagePublic'
 
 const HomePage = () => {
     return (
-        <div>
-            Inicio
-        </div>
+        <Fragment>
+            <QuestionsPagePublic/>
+        </Fragment>
     )
 }
 

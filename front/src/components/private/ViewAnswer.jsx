@@ -13,7 +13,7 @@ const ViewAnswer = ({ answer, deleteAnswer }) => {
                             <h4>{answer.answer}</h4>
                         </div>
                         <div className="col-1">
-                            {state.user.uid === answer.userId ? (deleteAnswer && (
+                            {state.user && state.user.uid === answer.userId ? (deleteAnswer && (
                                 <button
                                     className="btn-delete"
                                     onClick={() => deleteAnswer(answer.id)}>

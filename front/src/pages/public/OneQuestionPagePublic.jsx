@@ -14,7 +14,7 @@ const OneQuestionPagePublic = () => {
     useEffect(() => {
         dispatch(loadById(id))
         console.log(oneQuestion)
-    }, [dispatch, id, oneQuestion])
+    }, [])
 
     return (
         <Fragment>

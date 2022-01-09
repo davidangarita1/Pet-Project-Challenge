@@ -3,6 +3,7 @@ import useFormData from '../../hooks/UseFormData'
 import { postAnswer } from '../../app/middleware/payloadQuestions';
 import { useSelector, useDispatch } from 'react-redux';
 import swal from 'sweetalert'
+import { useParams } from 'react-router-dom';
 
 const FormAnswer = ({ idQuestion }) => {
 
@@ -10,6 +11,7 @@ const FormAnswer = ({ idQuestion }) => {
     const state = useSelector(state => state.auth)
     const { form, formData, updateFormData } = useFormData()
     const [alert, setAlert] = useState(false)
+    const questionId = useParams()
 
     const validator = (e) => {
         e.preventDefault()
@@ -34,7 +36,7 @@ const FormAnswer = ({ idQuestion }) => {
                     </div>
                 }
                 <input hidden name="userId" type="text" defaultValue={state.user.uid} ></input>
-                <input hidden name="questionId" type="text" defaultValue={idQuestion} ></input>
+                <input hidden name="questionId" type="text" defaultValue={questionId.id} ></input>
                 <div className="input-group mb-3">
                     <input
                         required

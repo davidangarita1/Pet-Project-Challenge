@@ -3,7 +3,7 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import { publicNavbar } from "../utils/NavbarList"
 import { app, google } from "../service/firebase"
-import { Fragment, useEffect } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { loginAction, loggedAction } from "../actions/AuthorActions"
@@ -14,6 +14,7 @@ const PublicLayout = () => {
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
+    const [user, setUser] = useState(null)
 
     const handler = () => {
         app.auth().signInWithPopup(google)
