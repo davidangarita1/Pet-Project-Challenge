@@ -68,7 +68,7 @@ export const postAnswer = (answer) => (dispatch) => {
   };
 
   axios.request(options).then(function (response) {
-    console.log(response.data);
+    console.log(response.data, 'Algo');
     dispatch(oneQuestionLoadSuccess(response.data))
   }).catch(function (error) {
     console.error(error);
