@@ -15,6 +15,11 @@ const QuestionsPagePrivate = () => {
 
     return (
         <Fragment>
+            <div className="row">
+                <div className="col-12 text-center">
+                <h1>Top Preguntas</h1>
+                </div>
+            </div>  
             {questions && questions.map((question) => {
                 return (
                     <QuestionPrivate key={question.id} question={question} />

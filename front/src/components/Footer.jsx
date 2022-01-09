@@ -4,7 +4,7 @@ import * as SiIcons from 'react-icons/si';
 
 const Footer = () => {
     return (
-        <div className='footerPage'>
+        <div className='footerPage text-center'>
            &copy; 2022 - 
            David H. Angarita - 
            Reto Sofka sobre preguntas y respuestas - 

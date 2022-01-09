@@ -11,11 +11,11 @@ import QuestionsPagePublic from './pages/public/QuestionsPagePublic';
 import CreateQuestion from './pages/private/CreateQuestion';
 import MyQuestions from './pages/private/MyQuestions';
 import Logout from './pages/private/Logout';
+import NotFound from './components/NotFound';
 
 function App() {
 
   return (
-
     <div className="App">
         <BrowserRouter>
           <Routes>
@@ -30,6 +30,7 @@ function App() {
               <Route path="CreateQuestion" element={<CreateQuestion />} />
               <Route path="MyQuestions" element={<MyQuestions />} />
               <Route path="Logout" element={<Logout />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>

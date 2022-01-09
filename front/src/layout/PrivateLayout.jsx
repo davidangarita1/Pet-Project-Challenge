@@ -32,8 +32,9 @@ const PrivateLayout = () => {
             {state.user
                 ? (<div>
                     <Navbar elements={privateNavbar} />
-                    <span>PrivateLayout</span>
-                    <Outlet />
+                    <div className="scroll">
+                        <Outlet />
+                    </div>
                     <Footer />
                 </div>)
                 :

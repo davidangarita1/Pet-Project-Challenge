@@ -27,9 +27,9 @@ class DeleteUseCaseTest {
     @Test
     void deleteUseCaseTest(){
 
-        var questionDT0 = new QuestionDTO("1as", "1234", "What id DDD in software", Type.OPEN, Category.SCIENCES);
+        var questionDT0 = new QuestionDTO("1as", "1234", "What id DDD in software", Type.OPEN, Category.SCIENCES, "Mensaje Email");
 
-        var question = new Question("1as", "1234", "What id DDD in software",Type.OPEN, Category.SOFTWARE_DEVELOPMENT);
+        var question = new Question("1as", "1234", "What id DDD in software",Type.OPEN, Category.SOFTWARE_DEVELOPMENT, "Mensaje Email");
 
         Mockito.when(questionRepository.deleteById("1as")).thenReturn(Mono.empty());
         Mockito.when(answerRepository.deleteByQuestionId("1as")).thenReturn(Mono.empty());

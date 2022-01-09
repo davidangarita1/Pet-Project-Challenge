@@ -1,22 +1,34 @@
 import { Link } from "react-router-dom"
+import * as FaIcons from 'react-icons/fa'
 
 const QuestionsPrivate = ({ question, deleteQuestion }) => {
 
     return (
         <div className='question'>
-            <Link to={`/private/question/${question.id}`} className="button">
-                {question.question}
-            </Link>
-            <p>
-                <span className="badge bg-secondary">{question.category}</span>
-                <span className="badge bg-success">{question.type}</span>
-            
-            {deleteQuestion && (
-                <button className="button" onClick={() => deleteQuestion(question.id)}>DELETE</button>
-            )}
-            </p>
-            
-
+            <div className="card mb-2">
+                <div className="card-body">
+                    <div className="row">
+                        <Link to={`/private/question/${question.id}`}>
+                            <h3>{question.question}</h3>
+                        </Link>
+                    </div>
+                    <div className="row">
+                        <div className="col-11">
+                            <span className="badge bg-secondary">{question.category}</span>
+                            <span className="badge bg-success">{question.type}</span>
+                        </div>
+                        <div className="col-1">
+                            {deleteQuestion && (
+                                <button
+                                    className="btn-delete"
+                                    onClick={() => deleteQuestion(question.id)}>
+                                    <FaIcons.FaTrashAlt />
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

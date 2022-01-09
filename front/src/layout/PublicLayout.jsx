@@ -46,7 +46,6 @@ const PublicLayout = () => {
         <Fragment>
             <Navbar elements={publicNavbar} />
             <div className="container">
-                <span>PublicLayout</span>
                 <button onClick={handler}>Iniciar Sesión con google</button>
                 <Outlet />
             </div>

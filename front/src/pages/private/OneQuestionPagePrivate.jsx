@@ -27,7 +27,7 @@ const OneQuestionPagePrivate = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal("¡Tu respuesta ha sido eliminada!", {icon: "success"});
+                    swal("¡Tu respuesta ha sido eliminada!", { icon: "success" });
                     dispatch(deleteAnswer(id))
                 }
             });
@@ -38,6 +38,10 @@ const OneQuestionPagePrivate = () => {
             {oneQuestion &&
                 <>
                     <OneQuestionPrivate oneQuestion={oneQuestion} />
+                    <div className="col-6 offset-3">
+                        <hr />
+                        <h3>{oneQuestion.answers.length} Respuestas</h3>
+                    </div>
                     {oneQuestion.answers && oneQuestion.answers.map((answer) => {
                         return (
                             <ViewAnswer key={answer.id} answer={answer} deleteAnswer={deleteAnswers} />

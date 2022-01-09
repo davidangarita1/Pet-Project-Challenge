@@ -3,6 +3,7 @@ package co.com.sofka.questions.routers;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.useCases.answers.AddAnswerUseCase;
 import co.com.sofka.questions.useCases.answers.DeleteAnswerUseCase;
+import co.com.sofka.questions.useCases.answers.SendMailUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -19,7 +20,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class AnswerRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> addAnswer(AddAnswerUseCase useCase) {
+    public RouterFunction<ServerResponse> addAnswer(AddAnswerUseCase useCase, SendMailUseCase mailUseCase) {
         return route(POST("answer/add").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(AnswerDTO.class)
                         .flatMap(addAnswerDTO -> useCase.apply(addAnswerDTO)

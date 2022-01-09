@@ -19,17 +19,20 @@ import reactor.core.publisher.Mono;
 @SpringBootTest
 class AddAnswerUseCaseTest {
     @SpyBean
-    private AddAnswerUseCase addAnswerUseCase;
+    AddAnswerUseCase addAnswerUseCase;
 
     @MockBean
-    private GetUseCase getUseCase;
+    GetUseCase getUseCase;
 
     @MockBean
     AnswerRepository answerRepository;
 
+    @MockBean
+    SendMailUseCase mailUseCase;
+
     @Test
     void addAnswerUseCaseTest(){
-        var question = new QuestionDTO("1asd2153453", "1234", "What id DDD in software?", Type.OPEN, Category.SCIENCES);
+        var question = new QuestionDTO("1asd2153453", "1234", "What id DDD in software?", Type.OPEN, Category.SCIENCES, "Mensaje");
 
         var answerDTO = new AnswerDTO("123","1asd2153453", "1234", "Domain Driven Design");
 
@@ -44,6 +47,8 @@ class AddAnswerUseCaseTest {
         assert resultQuestionDTO != null;
         Assertions.assertEquals(resultQuestionDTO.getId(),question.getId());
         Assertions.assertEquals(resultQuestionDTO.getQuestion(),question.getQuestion());
-        Assertions.assertEquals(resultQuestionDTO.getAnswers().get(0).getQuestionId(),answerDTO.getQuestionId());
+        Assertions.assertEquals(resultQuestionDTO.getAnswers().get(0).getQuestionId(), answerDTO.getQuestionId());
+
+        Mockito.verify(answerRepository,Mockito.times(1)).save(Mockito.any());
     }
 }

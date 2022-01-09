@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
 html {
   min-height: 100%;
   position: relative;
@@ -118,4 +125,18 @@ textarea {
 
 .right {
   float: right;
+}
+
+.scroll {
+  display: inline-block;
+  min-width: 100vw;
+  height: 82vh;
+  overflow-y: auto;
+}
+
+.btn-delete {
+  border: none;
+  background-color: transparent;
+  color: red;
+  font-size: 30px;
 }

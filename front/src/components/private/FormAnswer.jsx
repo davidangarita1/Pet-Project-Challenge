@@ -20,19 +20,34 @@ const FormAnswer = ({ idQuestion }) => {
         setAlert(false)
         dispatch(postAnswer(formData))
         form.current.reset()
-        swal({ title: "Respuesta guardada", text: "Click en el botón Ok!", icon: "success"});
+        swal({ title: "Respuesta guardada", text: "Click en el botón Ok!", icon: "success" });
     }
 
     return (
-        <div>
+        <div className="col-6 offset-3">
+            <hr />
             <form ref={form} onSubmit={validator} onChange={updateFormData}>
-                <h1>Respuestas</h1>
-                <label>Añade tu respuesta.</label>
-                <input required name="answer" type="text" placeholder='Ingresa aqui una respuesta'></input>
+                <h3>Añade tu respuesta.</h3>
+                {alert &&
+                    <div className="alert alert-danger" role="alert">
+                        El mensaje debe tener mas de 15 caracteres.
+                    </div>
+                }
                 <input hidden name="userId" type="text" defaultValue={state.user.uid} ></input>
                 <input hidden name="questionId" type="text" defaultValue={idQuestion} ></input>
-                {alert && <div className="alert alert-danger" role="alert">El mensaje debe tener mas de 15 caracteres.</div>}
-                <button type="submit">Enviar Respuesta</button>
+                <div className="input-group mb-3">
+                    <input
+                        required
+                        type="text"
+                        className="form-control"
+                        name="answer"
+                        placeholder="Ingresa aqui una respuesta"
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">Enviar</button>
+                    </div>
+                </div>
             </form>
         </div>
 
