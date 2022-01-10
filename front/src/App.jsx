@@ -12,6 +12,7 @@ import MyQuestions from './pages/private/MyQuestions';
 import Logout from './pages/private/Logout';
 import NotFound from './components/NotFound';
 import Login from './pages/public/Login';
+import Profile from './pages/private/Profile';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="question/:id" element={<OneQuestionPagePrivate />} />
             <Route path="CreateQuestion" element={<CreateQuestion />} />
             <Route path="MyQuestions" element={<MyQuestions />} />
+            <Route path="Profile" element={<Profile />} />
             <Route path="Logout" element={<Logout />} />
             <Route path="/private" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />

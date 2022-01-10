@@ -82,8 +82,8 @@ const Login = () => {
 
     return (
         <Fragment>
-            <div className="col-6 offset-3">
-                <form ref={form} onSubmit={submitHandler} onChange={updateFormData} className='mt-5 py-5 px-5'>
+            <div className="col-8 offset-2">
+                <form ref={form} onSubmit={submitHandler} onChange={updateFormData} className='mt-1 py-1 mt-md-3 py-md-3 px-md-5'>
                     <h1 style={{ margin: "50px" }}>{isSignIn ? "Regístrate" : "Iniciar Sesión"}</h1>
                     <input type="email" id="emailField" placeholder='Correo Electrónico' className="form-control" style={{ margin: "10px 0" }} />
                     <input onChange={e => validator(e)} type="password" id="passwordField" placeholder='password' className="form-control" />

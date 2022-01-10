@@ -23,7 +23,7 @@ public class PersonRouter {
     @Bean
     public RouterFunction<ServerResponse> getPerson(GetPersonUseCase useCase) {
         return route(
-                GET("person/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                GET("person/{uid}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(useCase.apply(

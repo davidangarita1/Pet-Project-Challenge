@@ -1,6 +1,7 @@
 import { questionsLoading, questionsLoadSuccess, questionsLoadError } from "../../actions/QuestionsActions";
 import { oneQuestionLoadSuccess, oneQuestionLoadError, oneQuestionsLoading, oneQuestionsDeleteAnswer } from "../../actions/OneQuestionActions";
 import { myQuestionsLoadSucces, myQuestionsLoading, myQuestionsLoadError, myQuestionDelete } from "../../actions/MyQuestionsActions";
+import { myPersonLoadSuccess, myPersonLoading, myPersonLoadError } from "../../actions/MyPersonActions";
 import axios from "axios";
 
 const API_URL = "http://localhost:4003";
@@ -137,18 +138,35 @@ export const getQuestionsByCategory = (category) => (dispatch) => {
   });
 }
 
-export const postPerson=(email,name,uid,url)=> async(dispatch)=>{
+export const postPerson = (email, name, uid, url) => async (dispatch) => {
 
   const options = {
     method: 'POST',
     url: `${API_URL}/person/create`,
-    headers: {'Content-Type': 'application/json'},
-    data: {uid:uid, name:name, lastName:"", email:email, pictureURL: url }
+    headers: { 'Content-Type': 'application/json' },
+    data: { uid: uid, name: name, lastName: "", email: email, pictureURL: url }
   };
 
   await axios.request(options).then(function (response) {
     console.log("Pensona creada");
   }).catch(function (error) {
+    console.error(error);
+  });
+}
+
+export const getPerson = (uid) => (dispatch) => {
+  dispatch(myPersonLoading())
+
+  const options = {
+    method: 'GET',
+    url: `${API_URL}/person/${uid}`,
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  axios.request(options).then(function (response) {
+    dispatch(myPersonLoadSuccess(response.data));
+  }).catch(function (error) {
+    dispatch(myPersonLoadError(error.message));
     console.error(error);
   });
 }
