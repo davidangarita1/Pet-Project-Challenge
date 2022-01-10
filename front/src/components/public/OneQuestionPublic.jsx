@@ -3,10 +3,8 @@ import { Link } from "react-router-dom"
 const OneQuestionPublic = ({question}) => {
 
     return(
-        <div className='question'>
-            <Link to={`/question/${question.id}`} className="button">
-                {question.question}
-            </Link>
+        <div className='col-6 offset-3 text-center question mt-3'>
+            <h2>{question.question}</h2>
             <p>
                 <span className="badge bg-secondary">{question.category}</span>
                 <span className="badge bg-success">{question.type}</span>

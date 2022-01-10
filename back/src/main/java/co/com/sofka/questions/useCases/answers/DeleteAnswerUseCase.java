@@ -1,11 +1,9 @@
 package co.com.sofka.questions.useCases.answers;
 
 import co.com.sofka.questions.repositories.AnswerRepository;
-import co.com.sofka.questions.repositories.QuestionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
-
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -17,7 +15,6 @@ public class DeleteAnswerUseCase implements Function<String, Mono<Void>> {
     public DeleteAnswerUseCase(AnswerRepository answerRepository) {
         this.answerRepository = answerRepository;
     }
-
 
     @Override
     public Mono<Void> apply(String id) {

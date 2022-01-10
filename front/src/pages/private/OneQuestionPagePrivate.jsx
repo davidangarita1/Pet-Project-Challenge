@@ -16,7 +16,7 @@ const OneQuestionPagePrivate = () => {
         dispatch(loadById(id))
     }, [dispatch, id])
 
-    const deleteAnswers = (id) => {
+    const deleteModal = (id) => {
         swal({
             title: "Estas segur@?",
             text: "Una vez eliminada, ¡no podrá recuperar esta respuesta!",
@@ -43,7 +43,7 @@ const OneQuestionPagePrivate = () => {
                     </div>
                     {oneQuestion.answers && oneQuestion.answers.map((answer) => {
                         return (
-                            <ViewAnswer key={answer.id} answer={answer} deleteAnswer={deleteAnswers} />
+                            <ViewAnswer key={answer.id} answer={answer} deleteAnswer={deleteModal} />
                         )
                     })}
                     <FormAnswer idQuestion={oneQuestion.id}></FormAnswer>
@@ -51,7 +51,6 @@ const OneQuestionPagePrivate = () => {
             }
             {isLoading && <h1>Cargando...</h1>}
             {error && <h1> Error {error} </h1>}
-
         </Fragment>
     )
 }

@@ -1,34 +1,18 @@
+import { useEffect } from "react"
+import { useDispatch , useSelector  } from "react-redux"
+import { loggedAction } from "../actions/AuthorActions"
+import { useNavigate } from "react-router-dom"
 import { Outlet } from "react-router-dom"
+import { publicNavbar } from "../utils/NavbarList"
+import { Fragment } from "react"
+import { app } from "../service/firebase"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import { publicNavbar } from "../utils/NavbarList"
-import { app, google } from "../service/firebase"
-import { Fragment, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { loginAction, loggedAction } from "../actions/AuthorActions"
-
 
 const PublicLayout = () => {
-    //const state = useSelector(state => state)
+    const state = useSelector(state => state)
     const dispatch = useDispatch()
-
     const navigate = useNavigate()
-    const [user, setUser] = useState(null)
-
-    const handler = () => {
-        app.auth().signInWithPopup(google)
-            .then(user => {
-                dispatch(
-                    loginAction(user.user.multiFactor.user.email,
-                        user.user.multiFactor.user.displayName,
-                        user.user.multiFactor.user.uid,
-                        user.user.multiFactor.user.photoURL))
-
-                navigate("/private/QuestionsPage")
-            })
-            .catch()
-    }
 
     useEffect(() => {
         app.auth().onAuthStateChanged((user) => {
@@ -40,14 +24,13 @@ const PublicLayout = () => {
                 navigate("/private/QuestionsPage")
             }
         })
-    }, [dispatch, navigate])
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <Fragment>
             <Navbar elements={publicNavbar} />
-            <div className="container">
-                <button onClick={handler}>Iniciar Sesión con google</button>
+            <div className="scroll">
                 <Outlet />
             </div>
             <Footer />

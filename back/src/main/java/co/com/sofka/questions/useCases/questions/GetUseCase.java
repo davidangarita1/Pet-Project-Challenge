@@ -42,7 +42,6 @@ public class GetUseCase implements Function<String, Mono<QuestionDTO>> {
                             question.setAnswers(answers);
                             return question;
                         }
-
                 );
     }
 }

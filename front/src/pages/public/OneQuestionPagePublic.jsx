@@ -14,6 +14,7 @@ const OneQuestionPagePublic = () => {
     useEffect(() => {
         dispatch(loadById(id))
         console.log(oneQuestion)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

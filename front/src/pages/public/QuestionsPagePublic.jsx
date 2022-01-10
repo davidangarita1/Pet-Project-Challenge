@@ -15,12 +15,20 @@ const QuestionsPagePublic = () => {
 
     return (
         <Fragment>
-            {questions && questions.map((question) => {
-                return (
-                    <QuestionPublic key={question.id} question={question} />
-                )})}
-            {isLoading && <h1>Cargando...</h1>}
-            {error && <h1>Error {error}</h1>}
+            <div className="row">
+                <div className="col-12 text-center mt-3 mb-3">
+                    <h1>Top Preguntas</h1>
+                </div>
+            </div>
+            <div className='col-sm-12 col-md-8 offset-md-2 offset-0'>
+                {questions && questions.map((question) => {
+                    return (
+                        <QuestionPublic key={question.id} question={question} />
+                    )
+                })}
+                {isLoading && <h1>Cargando...</h1>}
+                {error && <h1>Error {error}</h1>}
+            </div>
         </Fragment>
     )
 }

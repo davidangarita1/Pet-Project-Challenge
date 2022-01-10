@@ -4,7 +4,9 @@ import QuestionsPagePublic from './QuestionsPagePublic'
 const HomePage = () => {
     return (
         <Fragment>
-            <QuestionsPagePublic/>
+            <div className="col-8 offset-2">
+                <QuestionsPagePublic />
+            </div>
         </Fragment>
     )
 }

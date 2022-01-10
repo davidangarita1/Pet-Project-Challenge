@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<PublicLayout />}>
             <Route path="" element={<HomePage />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="question/:id" element={<OneQuestionPagePublic />} />
+            <Route path="Question/:id" element={<OneQuestionPagePublic />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/private" element={<PrivateLayout />}>
@@ -38,9 +38,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-
-
 }
-
 
 export default App;
