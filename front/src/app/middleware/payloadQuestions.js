@@ -136,3 +136,19 @@ export const getQuestionsByCategory = (category) => (dispatch) => {
     dispatch(myQuestionsLoadError(error.message));
   });
 }
+
+export const postPerson=(email,name,uid,url)=> async(dispatch)=>{
+
+  const options = {
+    method: 'POST',
+    url: `${API_URL}/person/create`,
+    headers: {'Content-Type': 'application/json'},
+    data: {uid:uid, name:name, lastName:"", email:email, pictureURL: url }
+  };
+
+  await axios.request(options).then(function (response) {
+    console.log("Pensona creada");
+  }).catch(function (error) {
+    console.error(error);
+  });
+}

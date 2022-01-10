@@ -1,13 +1,17 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState } from 'react'
+import profile from '../../media/person.png'
 import { app, google } from "../../service/firebase"
 import { loginAction } from "../../actions/AuthorActions"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import useFormData from '../../hooks/UseFormData'
+import { postPerson } from '../../app/middleware/payloadQuestions'
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(false)
     const dispatch = useDispatch()
     const [userMail, setUserMail] = useState(null)
+    const { form, formData, updateFormData } = useFormData();
 
     const [alert, setAlert] = useState([false, ""])
     const [alertPass, setAlertPass] = useState(false)
@@ -21,6 +25,12 @@ const Login = () => {
                         user.user.multiFactor.user.displayName,
                         user.user.multiFactor.user.uid,
                         user.user.multiFactor.user.photoURL))
+                dispatch(postPerson(
+                    user.user.email,
+                    user.user.displayName,
+                    user.user.uid,
+                    user.user.photoURL
+                ))
                 navigate("/private/QuestionsPage")
             })
             .catch()
@@ -31,7 +41,14 @@ const Login = () => {
             .then((firebaseUser) => {
                 setAlert([false, ""])
                 setUserMail(firebaseUser);
-            }).catch((error) => {
+                dispatch(postPerson(
+                    firebaseUser.user.email,
+                    firebaseUser.user.email.split("@")[0],
+                    firebaseUser.user.uid,
+                    profile
+                ))
+            })
+            .catch((error) => {
                 setAlert([true, "El usuario ya existe."])
             });
     }
@@ -58,7 +75,7 @@ const Login = () => {
         const password = e.target.passwordField.value;
         setAlert([false, ""])
 
-        if (isSignIn && mail && password && password.length >= 8) createUser(mail, password);  
+        if (isSignIn && mail && password && password.length >= 8) createUser(mail, password);
 
         if (!isSignIn && mail && password) signIn(mail, password);
     }
@@ -66,11 +83,11 @@ const Login = () => {
     return (
         <Fragment>
             <div className="col-6 offset-3">
-                <form onSubmit={submitHandler} className='mt-5 py-5 px-5'>
+                <form ref={form} onSubmit={submitHandler} onChange={updateFormData} className='mt-5 py-5 px-5'>
                     <h1 style={{ margin: "50px" }}>{isSignIn ? "Regístrate" : "Iniciar Sesión"}</h1>
                     <input type="email" id="emailField" placeholder='Correo Electrónico' className="form-control" style={{ margin: "10px 0" }} />
                     <input onChange={e => validator(e)} type="password" id="passwordField" placeholder='password' className="form-control" />
-                    
+
                     {alert[0] && <div className="alert alert-danger" role="alert">{alert[1]}</div>}
                     {alertPass && <div className="alert alert-warning" role="alert">La constraseña debe tener mas de 8 caracteres</div>}
 
