@@ -170,3 +170,21 @@ export const getPerson = (uid) => (dispatch) => {
     console.error(error);
   });
 }
+
+export const putPerson = (person) => async (dispatch) => {
+
+  const options = {
+    method: 'PUT',
+    url: `${API_URL}/person/update`,
+    headers: { 'Content-Type': 'application/json' },
+    data: person
+  };
+
+  await axios.request(options).then(function (response) {
+    dispatch(getPerson(person.uid));
+    console.log("Pensona actualizada");
+    dispatch(myPersonLoadSuccess(response.data));
+  }).catch(function (error) {
+    console.error(error);
+  });
+}

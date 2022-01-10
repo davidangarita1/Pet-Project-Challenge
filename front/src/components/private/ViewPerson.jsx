@@ -13,7 +13,7 @@ const ViewPerson = ({ person, editProfile }) => {
 						<h4><strong>Email:</strong> {person.email}</h4>
 					</div>
 					<div className=" d-flex mt-2">
-						<button onClick={() => editProfile(true)} className="btn1 btn-dark">Edit Profile</button>
+						<button onClick={() => editProfile(true)} className="btn btn-dark">Editar Perfil</button>
 					</div>
 				</div>
 			</div>

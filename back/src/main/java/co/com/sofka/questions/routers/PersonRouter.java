@@ -27,7 +27,7 @@ public class PersonRouter {
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(BodyInserters.fromPublisher(useCase.apply(
-                                        request.pathVariable("id")),
+                                        request.pathVariable("uid")),
                                 PersonDTO.class
                         ))
         );
