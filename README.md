@@ -39,3 +39,5 @@ respuesta
 #### Directrices:
 * Seleccionar un icono/logo y ponerlo siempre visible
 
+
+## Total: (90 Pts)
