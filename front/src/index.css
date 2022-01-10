@@ -130,7 +130,7 @@ textarea {
 .scroll {
   display: inline-block;
   min-width: 100vw;
-  height: 82vh;
+  height: 80vh;
   overflow-y: auto;
 }
 

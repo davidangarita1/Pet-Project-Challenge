@@ -4,7 +4,7 @@ import { myQuestionsLoadSucces, myQuestionsLoading, myQuestionsLoadError, myQues
 import { myPersonLoadSuccess, myPersonLoading, myPersonLoadError } from "../../actions/MyPersonActions";
 import axios from "axios";
 
-const API_URL = "http://localhost:4003";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const loadAllQuestion = () => (dispatch) => {
 
