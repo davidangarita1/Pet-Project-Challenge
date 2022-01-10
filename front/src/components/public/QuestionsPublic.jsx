@@ -7,9 +7,14 @@ const QuestionsPublic = ({ question }) => {
             <div className="card mb-2">
                 <div className="card-body">
                     <div className="row">
-                        <Link to={`question/${question.id}`}>
-                            <h3>{question.question}</h3>
-                        </Link>
+                        <div className="col-12">
+                            <h6><strong>Publicador:</strong> {question.email}</h6>
+                        </div>
+                        <div className="col-12">
+                            <Link to={`/question/${question.id}`}>
+                                <h3>{question.question}</h3>
+                            </Link>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-12">

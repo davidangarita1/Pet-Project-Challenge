@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const ViewPerson = ({ person, editProfile }) => {
 	return (
 		<Fragment>
-			<div className="card" style={{ width: "38rem" }}>
+			<div className="card" style={{ width: "70%" }}>
 				<h1 className="text-center">Mi perfil</h1>
 				<div className="card-body d-flex flex-column justify-content-center align-items-center">
 					<img src={person.pictureURL} height="100" width="100" alt="foto" className="img-fluid" />

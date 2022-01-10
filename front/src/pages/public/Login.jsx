@@ -5,7 +5,7 @@ import { loginAction } from "../../actions/AuthorActions"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import useFormData from '../../hooks/UseFormData'
-import { postPerson } from '../../app/middleware/payloadQuestions'
+import { getPersonValid, postPerson } from '../../app/middleware/payloadQuestions'
 
 const Login = () => {
     const [isSignIn, setIsSignIn] = useState(false)
@@ -20,18 +20,7 @@ const Login = () => {
     const handler = () => {
         app.auth().signInWithPopup(google)
             .then(user => {
-                dispatch(
-                    loginAction(user.user.multiFactor.user.email,
-                        user.user.multiFactor.user.displayName,
-                        user.user.multiFactor.user.uid,
-                        user.user.multiFactor.user.photoURL))
-                dispatch(postPerson(
-                    user.user.email,
-                    user.user.displayName,
-                    user.user.uid,
-                    user.user.photoURL
-                ))
-                navigate("/private/QuestionsPage")
+                dispatch(getPersonValid(user.user.multiFactor.user, navigate))
             })
             .catch()
     }
@@ -86,7 +75,7 @@ const Login = () => {
                 <form ref={form} onSubmit={submitHandler} onChange={updateFormData} className='mt-1 py-1 mt-md-3 py-md-3 px-md-5'>
                     <h1 style={{ margin: "50px" }}>{isSignIn ? "Regístrate" : "Iniciar Sesión"}</h1>
                     <input type="email" id="emailField" placeholder='Correo Electrónico' className="form-control" style={{ margin: "10px 0" }} />
-                    <input onChange={e => validator(e)} type="password" id="passwordField" placeholder='password' className="form-control" />
+                    <input onChange={e => validator(e)} type="password" id="passwordField" placeholder='Contraseña' className="form-control" />
 
                     {alert[0] && <div className="alert alert-danger" role="alert">{alert[1]}</div>}
                     {alertPass && <div className="alert alert-warning" role="alert">La constraseña debe tener mas de 8 caracteres</div>}

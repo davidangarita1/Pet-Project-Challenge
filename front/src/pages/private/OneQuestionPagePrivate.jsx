@@ -49,6 +49,7 @@ const OneQuestionPagePrivate = () => {
                     <FormAnswer idQuestion={oneQuestion.id}></FormAnswer>
                 </>
             }
+            {oneQuestion && oneQuestion.answers.length === 0 && <p className="text-center">No hay respuestas para mostrar</p>}
             {isLoading && <h1>Cargando...</h1>}
             {error && <h1> Error {error} </h1>}
         </Fragment>

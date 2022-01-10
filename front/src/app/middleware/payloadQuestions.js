@@ -3,6 +3,7 @@ import { oneQuestionLoadSuccess, oneQuestionLoadError, oneQuestionsLoading, oneQ
 import { myQuestionsLoadSucces, myQuestionsLoading, myQuestionsLoadError, myQuestionDelete } from "../../actions/MyQuestionsActions";
 import { myPersonLoadSuccess, myPersonLoading, myPersonLoadError } from "../../actions/MyPersonActions";
 import axios from "axios";
+import { loginAction } from "../../actions/AuthorActions";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -151,6 +152,22 @@ export const postPerson = (email, name, uid, url) => async (dispatch) => {
     console.log("Pensona creada");
   }).catch(function (error) {
     console.error(error);
+  });
+}
+
+export const getPersonValid = (user, navigate) => (dispatch) => {
+  const options = {
+    method: 'GET',
+    url: `${API_URL}/person/${user.uid}`,
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  axios.request(options).then(function (response) {
+    dispatch(loginAction(user.email,user.displayName,user.uid,user.photoURL));
+    navigate("/private/QuestionsPage")
+  }).catch(function (error) {
+    dispatch(postPerson(user.email,user.displayName,user.uid,user.photoURL));
+    navigate("/private/QuestionsPage")
   });
 }
 

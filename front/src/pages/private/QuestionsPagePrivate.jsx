@@ -26,6 +26,10 @@ const QuestionsPagePrivate = () => {
                         <QuestionPrivate key={question.id} question={question} />
                     )
                 })}
+                {questions &&
+                    questions.length === 0 &&
+                    <p className="text-center">No hay preguntas para mostrar</p>
+                }
                 {isLoading && <h1>Cargando...</h1>}
                 {error && <h1>Error {error}</h1>}
             </div>

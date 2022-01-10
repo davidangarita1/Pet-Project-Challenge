@@ -4,7 +4,6 @@ import co.com.sofka.questions.collections.Answer;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.repositories.AnswerRepository;
-import co.com.sofka.questions.useCases.answers.AddAnswerUseCase;
 import co.com.sofka.questions.useCases.questions.GetUseCase;
 import co.com.sofka.questions.utils.Category;
 import co.com.sofka.questions.utils.Type;
