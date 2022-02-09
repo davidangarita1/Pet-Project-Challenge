@@ -20,7 +20,6 @@ const Profile = () => {
 
     return (
         <Fragment>
-            
             <div className="d-flex justify-content-center mt-3">
                 {edit && <FormPerson person={myPerson} editProfile={editProfile} />}
                 {myPerson && !edit &&
