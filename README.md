@@ -1,5 +1,11 @@
 # Pet Project Challenge SOFK-ANWERS
 
+## Deploy Links
+
+Front-End: https://questions-4fa02.web.app/
+
+Back-End Deploy: https://app-questions-challenge.herokuapp.com/questions/getAll
+
 ## Caracteristicas realizadas
 
 ### 2)(20 Pts) Opción de menú que permita la actualización de los datos personales:
