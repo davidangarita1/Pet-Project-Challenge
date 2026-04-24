@@ -10,8 +10,7 @@ const Footer = () => {
            Reto Sofka sobre preguntas y respuestas - 
            Hecho con 
            ReactJs <FaIcons.FaReact /> , 
-           Java <SiIcons.SiJava /> , y 
-           SpringBoot <SiIcons.SiSpring/> - 
+           SpringBoot <SiIcons.SiSpringsecurity/> - 
            Metodologia de Programación <FaIcons.FaCode /> Funcional Reactiva
         </div>
     )
